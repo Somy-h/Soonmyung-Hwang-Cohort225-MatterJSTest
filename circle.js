@@ -20,7 +20,6 @@ class Circle {
     //ctx.rotate(angle);
     ctx.beginPath();
     ctx.fillStyle = 'pink';
-    //console.log(pos.x, pos.y);
     ctx?.arc(pos.x, pos.y, this.r, 0, 2 * Math.PI);
     ctx.fill();
     ctx.beginPath();

@@ -1,6 +1,4 @@
-//const { Matter } = require("matter-js");
 
-// import * as Matter from 'matter-js';
 class App {
   constructor() {
     this.setup();

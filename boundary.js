@@ -20,17 +20,15 @@ class Boundary {
     let angle = this.body.angle;
 
     ctx.save();
+
     ctx.translate(pos.x, pos.y);
     //ctx.rotate(angle * Math.PI /180);
     ctx.rotate(angle);
     ctx.fillStyle = 'green';
-    //console.log(-this.w/2, -this.h/2);
     ctx?.fillRect(-this.w/2, -this.h/2, this.w, this.h);
-
     ctx.translate(-pos.x, -pos.y);
+
     ctx.restore();
   }
-
-  
 
 }
