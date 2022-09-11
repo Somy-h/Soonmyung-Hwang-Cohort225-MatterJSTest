@@ -1,6 +1,8 @@
-class Box {
+class Box extends Shape{
   constructor(world, x, y, w, h) {
 
+    super(world);
+    
     var options = {
       friction: 0.1,
       restitution: 0.6
@@ -31,6 +33,10 @@ class Box {
     
     ctx.translate(-pos.x, -pos.y);
     ctx.restore();
+  }
+
+  removeFromWorld() {
+    super.removeFromWorld(this.body);
   }
 
 }

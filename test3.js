@@ -32,14 +32,12 @@ class App {
   mouseDragged(e) {
     if (this.mouseDowned) {
       this.circles?.push(new Circle(this.world, e.x, e.y, range(10, 20)));
-      //this.boxes.push(new Box(this.world, e.x, e.y, 40, 40));
     }
   } 
   
   draw() {
     Matter.Engine.update(this.engine);
     this.ctx.clearRect(0, 0, 800, 800);
-    //this.boxes?.forEach (box => box.show(this.ctx));
     this.circles?.forEach(circle => circle.show(this.ctx));
     this.boundaries?.forEach(boundary => boundary.show(this.ctx));
   }
