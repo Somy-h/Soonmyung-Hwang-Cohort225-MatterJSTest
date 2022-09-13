@@ -26,7 +26,6 @@ class Chain {
         }
         this.constraint = Matter.Constraint.create(options);
         Matter.World.add(this.world, this.constraint);
-
       }
       prev = p;
     }
@@ -39,12 +38,11 @@ class Chain {
       this.chain[i].show(ctx);
     }
 
-    // draw line
+    //draw line
     ctx.strokeStyle = 'salmon';
     ctx.beginPath();
     
     let prev = this.chain[0];
-
     for (let i = 1; i < this.chain.length; i++) {
       ctx.moveTo(prev.body.position.x, prev.body.position.y)
       ctx.lineTo(this.chain[i].body.position.x, this.chain[i].body.position.y);
