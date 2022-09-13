@@ -17,12 +17,25 @@ class Circle extends Shape{
   show(ctx) {
 
     let pos = this.body.position;
+    let angle = this.body.angle;
 
     ctx.save();
+    ctx.translate(pos.x, pos.y);
+    ctx.rotate(angle);
     ctx.beginPath();
     ctx.fillStyle = this.color;
-    ctx?.arc(pos.x, pos.y, this.r, 0, 2 * Math.PI);
+    ctx?.arc(0, 0, this.r, 0, 2 * Math.PI);
     ctx.fill();
+    
+
+    // for angle debugging
+    ctx.beginPath();
+    ctx.strokeStyle = 'gray';
+    ctx.moveTo(0, 0);
+    ctx.lineTo(this.r, 0);
+    ctx.stroke();
+
+    ctx.translate(-pos.x, -pos.y);
     ctx.restore();
   }
 

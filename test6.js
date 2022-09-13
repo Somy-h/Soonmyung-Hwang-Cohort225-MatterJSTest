@@ -32,7 +32,7 @@ class App {
     }
     this.mConstraint = Matter.MouseConstraint.create(this.engine, options);
     Matter.World.add(this.world, this.mConstraint);
-    console.log(this.mConstraint);
+    //console.log(this.mConstraint);
     requestAnimationFrame(this.animate.bind(this));
   }
   
@@ -47,14 +47,19 @@ class App {
     // mouse
     if (this.mConstraint.body) {
       
+      // selected body
       let pos = this.mConstraint.body.position;
       let offset = this.mConstraint.constraint.pointB;
       let mPos = this.mConstraint.mouse.position;
+      
+      console.log(this.mConstraint);
+      
       this.ctx.beginPath();
       this.ctx.fillStyle = 'green';
       this.ctx.arc(pos.x, pos.y, 20, 0, Math.PI * 2);
       this.ctx.fill();
 
+      
       // selected body to mouse position
       this.ctx.beginPath();
       this.ctx.strokeStyle = 'blue';
