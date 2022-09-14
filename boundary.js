@@ -14,6 +14,10 @@ class Boundary {
     Matter.World.add(this.world, this.body);
   }
 
+  setColor(color) {
+    this.color = color;
+  }
+
   show(ctx) {
 
     let pos = this.body.position;
@@ -24,7 +28,7 @@ class Boundary {
     ctx.translate(pos.x, pos.y);
     //ctx.rotate(angle * Math.PI /180);
     ctx.rotate(angle);
-    ctx.fillStyle = 'green';
+    ctx.fillStyle = this.color ?? 'green';
     ctx?.fillRect(-this.w/2, -this.h/2, this.w, this.h);
     ctx.translate(-pos.x, -pos.y);
 

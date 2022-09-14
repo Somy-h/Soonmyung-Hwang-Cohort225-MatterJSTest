@@ -3,15 +3,19 @@ class Circle extends Shape{
     super(world);
 
     var options = {
-      friction: 0.3,
+      friction: 0.1,
       restitution: 0.6,
       isStatic: fixed
     }
-    this.color = `rgba(${range(0, 255)},${range(0, 255)},${range(0, 255)}, 0.6)`;
+    this.color = `rgba(${range(0, 255)},${range(0, 255)},${range(0, 255)}, 0.5)`;
     this.body = Matter.Bodies.circle(x, y, r, options);
     this.r = r;
     this.world = world;
     Matter.World.add(this.world, this.body);
+  }
+
+  setColor(color) {
+    this.color = color;
   }
 
   show(ctx) {
@@ -29,11 +33,11 @@ class Circle extends Shape{
     
 
     // for angle debugging
-    ctx.beginPath();
-    ctx.strokeStyle = 'gray';
-    ctx.moveTo(0, 0);
-    ctx.lineTo(this.r, 0);
-    ctx.stroke();
+    // ctx.beginPath();
+    // ctx.strokeStyle = 'gray';
+    // ctx.moveTo(0, 0);
+    // ctx.lineTo(this.r, 0);
+    // ctx.stroke();
 
     ctx.translate(-pos.x, -pos.y);
     ctx.restore();
