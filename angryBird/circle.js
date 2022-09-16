@@ -18,6 +18,11 @@ class Circle extends Shape{
     this.color = color;
   }
 
+  setPosition(pos) {
+    this.body.position.x = pos.x;
+    this.body.position.y = pos.y;
+  }
+
   show(ctx) {
 
     let pos = this.body.position;
@@ -30,7 +35,15 @@ class Circle extends Shape{
     ctx.fillStyle = this.color;
     ctx?.arc(0, 0, this.r, 0, 2 * Math.PI);
     ctx.fill();
-  
+    
+
+    // for angle debugging
+    // ctx.beginPath();
+    // ctx.strokeStyle = 'gray';
+    // ctx.moveTo(0, 0);
+    // ctx.lineTo(this.r, 0);
+    // ctx.stroke();
+
     ctx.translate(-pos.x, -pos.y);
     ctx.restore();
   }
