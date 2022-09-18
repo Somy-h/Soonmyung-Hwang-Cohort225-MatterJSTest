@@ -4,8 +4,8 @@ function range(min, max) {
 
 function getRectPointFromCenter(x, y, w, h, isTranslated = true) {
   return {
-    x: isTranslated ? -w/2 : x - w/2,
-    y: isTranslated ? -h/2 : y - h/2
+    x: isTranslated ? Math.round(-w/2) : Math.round(x - w/2),
+    y: isTranslated ? Math.round(-h/2) : Math.round(y - h/2)
   }
 }
 

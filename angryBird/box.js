@@ -12,6 +12,8 @@ class Box extends Shape{
     }
     this.body = Matter.Bodies.rectangle(x, y, w, h);
     Matter.Body.setMass(this.body, this.body.mass * 5);
+    this.img = new Image();
+    this.img.src = "./resources/box.png";
     this.w = w;
     this.h = h;
     this.world = world;
@@ -25,14 +27,15 @@ class Box extends Shape{
 
     ctx.save();
     ctx.translate(pos.x, pos.y);
-    ctx.fillStyle = this.color ?? 'orange';
     ctx.rotate(angle);
-    let newPos = getRectPointFromCenter(pos.x, pos.y, this.w, this.h);
-    ctx.fillRect(newPos.x, newPos.y, this.w, this.h);
-    ctx.beginPath();
-    ctx.lineWidth = 1;
-    ctx.strokeStyle = 'brown';
-    ctx.strokeRect(newPos.x, newPos.y, this.w, this.h);
+    let newPos = getRectPointFromCenter(pos.x, pos.y, this.w, this.h, true);
+    ctx.drawImage(this.img, newPos.x, newPos.y, this.w, this.h);
+    //ctx.fillStyle = this.color ?? 'orange';
+    // ctx.fillRect(newPos.x, newPos.y, this.w, this.h);
+    // ctx.beginPath();
+    // ctx.lineWidth = 1;
+    // ctx.strokeStyle = 'brown';
+    // ctx.strokeRect(newPos.x, newPos.y, this.w, this.h);
     ctx.translate(-pos.x, -pos.y);
     ctx.restore();
   }  
