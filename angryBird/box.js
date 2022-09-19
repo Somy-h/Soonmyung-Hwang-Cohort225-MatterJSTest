@@ -1,3 +1,4 @@
+
 class Box extends Shape{
   constructor(world, x, y, w, h) {
 
@@ -10,14 +11,15 @@ class Box extends Shape{
         category: 0x0001 // For preventing mouse drag 
       }
     }
-    this.body = Matter.Bodies.rectangle(x, y, w, h);
-    Matter.Body.setMass(this.body, this.body.mass * 5);
+    this.body = Bodies.rectangle(x, y, w, h);
+    Body.setMass(this.body, this.body.mass * 5);
     this.img = new Image();
     this.img.src = "./resources/box.png";
     this.w = w;
     this.h = h;
     this.world = world;
-    Matter.World.add(this.world, this.body);
+    World.add(this.world, this.body);
+    //Composite.add(this.world, this.body);
   }
 
   show(ctx) {

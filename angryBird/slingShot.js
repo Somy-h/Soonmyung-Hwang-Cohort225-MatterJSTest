@@ -1,16 +1,19 @@
 class SlingShot {
-  constructor(world, x, y, body) {
+  constructor(world, x, y, birdBody) {
     const options = {
       pointA: {
         x: x,
         y: y
       },
-      bodyB: body,
-      stiffness: 0.02,
-      length: 40
+      bodyB: birdBody,
+      stiffness: 0.05,
+      length: 5
     }
     this.sling = Constraint.create(options);
     World.add(world, this.sling);
+    
+    this.img = new Image();
+    this.img.src = "./resources/sling.png";
   }
 
   show(ctx) {
@@ -18,7 +21,10 @@ class SlingShot {
       let posA = this.sling.pointA;
       let posB = this.sling.bodyB.position;
       ctx.strokeStyle = this.color ?? 'black';
+      ctx.lineWidth = 18;
       ctx.beginPath();
+      
+      ctx.drawImage(this.img, posA.x-75, posA.y-32, 100, 200);
       ctx.moveTo(posA.x, posA.y);
       ctx.lineTo(posB.x, posB.y);
       ctx.stroke();

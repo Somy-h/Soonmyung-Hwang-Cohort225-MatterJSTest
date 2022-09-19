@@ -52,7 +52,7 @@ class App {
       let offset = this.mConstraint.constraint.pointB;
       let mPos = this.mConstraint.mouse.position;
       
-      console.log(this.mConstraint);
+      //console.log(this.mConstraint);
       
       this.ctx.beginPath();
       this.ctx.fillStyle = 'green';
@@ -65,7 +65,7 @@ class App {
       this.ctx.strokeStyle = 'blue';
       this.ctx.moveTo(pos.x + offset.x, pos.y + offset.y);
       this.ctx.lineTo(mPos.x, mPos.y);
-      console.log(pos, offset, mPos);
+      //console.log(pos, offset, mPos);
       this.ctx.stroke();
     }
 

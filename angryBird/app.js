@@ -1,9 +1,11 @@
 
 var Engine = Matter.Engine,
     World  = Matter.World,
-    Bodies = Matter.Bodies,
+    Body = Matter.Body,
+    Bodies = Matter.Bodies,    
     Mouse  = Matter.Mouse,
     Events = Matter.Events,
+    //Composite = Matter.Composite,
     Constraint = Matter.Constraint,
     MouseConstraint = Matter.MouseConstraint;
 
@@ -41,31 +43,25 @@ class App {
     this.canvasMouse = Mouse.create(this.canvas);
     this.canvasMouse.pixelRatio = window.devicePixelRatio;
     const options = {
-      mouse: this.canvasMouse
+      mouse: this.canvasMouse,
+      constraint: {
+        stiffness: 0.2
+      }
     }
     this.mConstraint = MouseConstraint.create(this.engine, options);
-    
 
-
-    Events.on(this.mConstraint, 'mouseup', (e) => {
-      //console.log(this.mConstraint);
-      if (this.mConstraint.body?.label == 'Rectangle Body') {
-        return;
-      }
-      setTimeout(() => {
-        this.slingShot.detach();
-      }, 60);
-    });
-
+    // setup mouseup event 
+    Events.on(this.mConstraint, 'mouseup', this.onMouseUp.bind(this));
+  
     World.add(this.world, this.mConstraint);
-
     this.mConstraint.collisionFilter.mask = 0x0002;
 
     requestAnimationFrame(this.animate.bind(this));
   }
 
+  // Spacebar Keyevent: Reload the bird
   onKeyDown(e) {
-    if(e.keyCode ===32) {
+    if(e.keyCode ===32) { // Spacebar
       if (this.bird) {
         this.bird.removeFromWorld(this.world);
       }
@@ -73,6 +69,14 @@ class App {
       this.slingShot.attach(this.bird.body);
     }
   } 
+
+  onMouseUp(e) {
+      setTimeout(() => {
+        this.slingShot.detach();
+      }, 60);
+      ////
+
+  }
 
   // set up Boxes
   setupBoxes() {
@@ -108,10 +112,10 @@ class App {
     this.ground.show(this.ctx);
     // boxes
     this.boxes.forEach(box => box.show(this.ctx));
-    // bird
-    this.bird?.show(this.ctx);
     // sling shot
     this.slingShot.show(this.ctx);
+    // bird
+    this.bird?.show(this.ctx);
   }
 
   checkMouseConstraints() {

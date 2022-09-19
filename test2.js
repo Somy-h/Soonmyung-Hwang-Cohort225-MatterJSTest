@@ -21,7 +21,7 @@ class App {
       isStatic: true
     }
     this.ground = Matter.Bodies.rectangle(this.canvas.width/2, this.canvas.height - 10, this.canvas.width, 20, options);
-    console.log(this.ground);
+    //console.log(this.ground);
     Matter.World.add(this.world, this.ground);
 
     window.addEventListener('mousedown', (e) => this.mouseDowned = true);

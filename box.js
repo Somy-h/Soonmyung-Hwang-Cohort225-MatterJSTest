@@ -10,7 +10,7 @@ class Box extends Shape{
     this.body = Matter.Bodies.rectangle(x, y, w, h);
     this.w = w + range(0, 30);
     this.h = h + range(0, 30);
-    console.log(this.w, this.h);
+    //console.log(this.w, this.h);
     this.world = world;
     Matter.World.add(this.world, this.body);
   }
